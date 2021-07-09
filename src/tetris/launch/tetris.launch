@@ -1,0 +1,40 @@
+<launch>
+  <!-- Board parameters -->
+  <param name="board_width" value="8" />
+  <param name="board_height" value="6" />
+  <param name="board_square_tiles" value="2" />
+  <param name="board_line_tiles" value="2" />
+  <param name="board_s_tiles" value="2" />
+  <param name="board_z_tiles" value="2" />
+  <param name="board_reverse_l_tiles" value="2" />
+  <param name="board_t_tiles" value="2" />
+  <param name="board_l_tiles" value="2" />
+  <param name="board_thickness" value="0.00635" />
+  <param name="board_fixed" value="true" />
+  <param name="board_top_left_marker" value="8" />
+  <param name="board_top_right_marker" value="7" />
+  <param name="board_bottom_left_marker" value="9" />
+  <param name="board_bottom_right_marker" value="10" />
+  <param name="table_thickness" value="0.3" />
+
+  <!-- Pick-and-place parameters -->
+  <param name="gripper_side" value="right" />
+  <param name="z_offset" value="0.0" />
+  <param name="z_max_steps" value="20" />
+  <param name="z_delta" value="0.01" />
+  <param name="lift_offset" value="0.2" />
+  <param name="drop_offset" value="0.02" />
+  <param name="verbose" value="true" />
+  <param name="init_delay" value="5" />
+  <param name="grasp_enabled" value="true" />
+  <param name="search_height" value="-0.15" />
+
+  <!-- Camera -->
+  <include file="$(find tetris)/launch/ar_tracking.launch" />
+  <param name="tile_size" value="6" />
+
+  <!-- MoveIt planner -->
+  <include file="$(find tetris)/launch/baxter_moveit_headless.launch" />
+
+  <node name="tetris" pkg="tetris" type="tetris.py" output="screen" />
+</launch>

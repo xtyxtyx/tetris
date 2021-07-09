@@ -1,0 +1,86 @@
+---
+title: Results
+about: results
+layout: base
+---
+
+<!--
+(a) How well did your project work? What tasks did it perform?
+(b) Illustrate with pictures and at least one video.
+-->
+
+<div class="clearfix">
+  <div class="col-12">
+    <div class="p-4">
+      <h2>Tile Detection</h2>
+      <p>
+        As mentioned, tile recognition without AR tags was dropped from the final system after it became apparent the tile pose would be difficult to estimate.
+        For example, consider the two images shown below.
+        The one on the left is a raw camera image, and the one on the right is the same image after processing:
+      </p>
+      <ol>
+        <li>Convert the image to grayscale to reduce unnecessary computation.</li>
+        <li>Convolve the image with a Gaussian kernel to smooth out high-frequency artifacts.</li>
+        <li>Apply <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.sobel.html">Sobel</a> edge detection.</li>
+        <li>Highlight points with high intensities in both the edge and grayscale images.</li>
+      </ol>
+      <p>
+        While the processing did noticeably reduce glare from reflective surfaces like the table, other objects like the whiteboard and floor could still be confused for tiles.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="clearfix">
+  <div class="col-6 float-left">
+    <div class="p-4">
+      <img alt="Raw image example" src="{{ site.baseurl }}/assets/images/colorized.png">
+    </div>
+  </div>
+  <br>
+  <div class="col-6 float-left">
+    <div class="p-4">
+      <img alt="Filtered image example" src="{{ site.baseurl }}/assets/images/combined_bitmap.png">
+    </div>
+  </div>
+</div>
+
+<div class="clearfix">
+  <div class="col-6 float-left">
+    <div class="p-4">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/aXY05JaPWDw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/bBTJxY0SRa4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 float-left">
+    <div class="p-4">
+      <h2>Pick-and-place</h2>
+      <p>
+        The first demonstration on the left shows the pick-and-place module moving a square piece, which can be done fairly reliably, since the square has a large contiguous flat area.
+        Note the initial sweep the left hand holding the camera performs to pick up the AR tags.
+        So long as the board and tile are in correct approximate locations, this allows the robot to have no <em>a priori</em> knowledge of their exact locations.
+        Also, the board and tile need not coincide with the </tt>base</tt> frame, which is used as a "world" reference frame all transforms are relative to.
+      </p>
+      <p>
+        To ensure the tile is placed in the correct orientation, Baxter will rotate its wrist while picking up the tile so its wrist frame coincides with the tile's AR tag frame.
+        Baxter then rotates its wrist (and the tile AR tag) to coincide with the board frame (far right AR tag), with the addition of some multiple of 90 degrees.
+      </p>
+      <p>
+        The second video illustrates a common failure mode where the board is out of reach of the gripper.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="clearfix">
+  <div class="col-12">
+    <p>
+      Our project was able to recognize the tiles and the board, solve the puzzle, grasp the object, and rotate into the correct orientation consistently.
+      However, due to the sensitivity of other tiles' AR tags to lighting and position, we were unable to reliably pick up the other types of tiles and complete the puzzle.
+    </p>
+  </div>
+</div>

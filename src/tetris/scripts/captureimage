@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+if [ ! "$1" ]; then
+  echo "Usage: $0 [topic]"
+  exit 1
+fi
+
+if [ ! $(rostopic list | grep $1) ]; then
+  echo "Error: topic '$1' not found."
+fi
+
+rosrun image_view image_saver image:="$1" _save_all_image:=false __name:=image_saver &
+
+echo 'Press any key to capture, or CTRL+C to exit.'
+while $(read -s -n 1); do
+  rosservice call /image_saver/save
+done

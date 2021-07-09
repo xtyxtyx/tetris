@@ -1,0 +1,15 @@
+timezone: America/Los_Angeles
+permalink: pretty
+
+defaults:
+  -
+    scope:
+      path: ''
+    values:
+      layout: default
+
+exclude:
+  - slides/tetris-puzzle-solver-slides.tex
+  - Gemfile
+  - Gemfile.lock
+  - .gitignore

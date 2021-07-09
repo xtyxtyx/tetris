@@ -1,0 +1,49 @@
+---
+title: Tetris
+about: home
+layout: base
+---
+
+<div class="clearfix">
+  <div class="col-12 float-left py-4">
+    <h1>{{ page.title }}</h1>
+  </div>
+</div>
+<div class="clearfix">
+  <div class="col-4 float-left">
+    <p>A robotics project to solve Tetris puzzles.</p>
+    <p><strong>Group 29</strong></p>
+    <div class="BtnGroup">
+      <a class="btn BtnGroup-item btn-outline" role="button" href="https://github.com/jonathan-j-lee/tetris">View on GitHub</a>
+      <a class="btn BtnGroup-item btn-outline" role="button" href="https://github.com/jonathan-j-lee/tetris/releases/latest">Latest Release</a>
+    </div>
+  </div>
+  <div class="col-8 float-left">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/aXY05JaPWDw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+<div class="clearfix">
+  <div class="col-12 float-left py-4">
+    <p>
+      We use a Baxter robot to solve a puzzle inspired by the classic computer game of tetris.
+      While using the same pieces, the robot's goal is to solve a puzzle in which all tetris pieces fill the frame without spaces.
+    </p>
+    <p>
+      This project demonstrates Baxter's use of computer vision, path planning, sensing, and actuation to complete the task of moving components between two places in a two dimensional plane.
+      We believe that this task is particularly interesting because of the different shaped pieces adding a level of complexity as well as the increasing difficulty to place each piece on the board as the margin of allowed error becomes smaller.
+      Some applications that require a similarly high level of precision include box-packing for deliveries or surgical robots.
+    </p>
+    <p>
+      Some of the interesting problems we had to solve:
+    </p>
+    <p>
+      <ul>
+        <li>The board is rather large relative to Baxter's range of motion. This means that there is very little margin for how everything needs to be placed. One direct consequence of this is: since we're using both hands (one for gripping and the other for camera vision), we need to alternate moving the arms over the scene.</li>
+        <li>As more pieces get placed on the board, it becomes a tighter fit for the other pieces. Accurate placement of pieces becomes more crucial as the board fills up. This complexity is magnified by the odd shapes of some of the pieces.</li>
+        <li>We wanted to be able to do this project without the use of AR markers. However, we found that getting vision to detect the pieces was significantly more challenging than expected. Particularly, the glare of lighting against the table made it difficult to detect edges. We also needed a way to detect the shape of each piece, perhaps using some kind of convolutional neural network for classification. In the end, we believed the complexity to be prohibitive given time constraints and fell back on using AR markers.</li>
+      </ul>
+    </p>
+  </div>
+</div>

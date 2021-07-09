@@ -1,0 +1,36 @@
+#!/bin/bash
+
+session=dashboard
+set -e
+cd "$(git rev-parse --show-toplevel)"
+
+if [ ! "$1" ]; then
+  echo "Usage: $0 [hostname]"
+  exit 1
+fi
+
+tmux -2 new-session -d -s "$session" -A "./baxter.sh $1"
+# tmux new-window -n "frontend"
+tmux split-window -h "./baxter.sh $1"
+tmux split-window -h "./baxter.sh $1"
+tmux select-pane -t 0
+tmux split-window -v "./baxter.sh $1"
+tmux select-pane -t 2
+tmux split-window -v "./baxter.sh $1"
+tmux select-pane -t 4
+tmux split-window -v "./baxter.sh $1"
+tmux select-layout tiled
+
+tmux select-pane -t 0
+tmux send-keys "roslaunch tetris tetris.launch startplanning:=false" C-m
+tmux select-pane -t 1
+tmux send-keys "rosrun baxter_interface joint_trajectory_action_server.py" C-m
+tmux select-pane -t 2
+tmux send-keys "roslaunch tetris baxter_moveit_headless.launch" C-m
+tmux select-pane -t 3
+tmux send-keys "roslaunch tetris baxter_state_publisher.launch" C-m
+tmux select-pane -t 4
+tmux send-keys "rosrun tf tf_echo base right_hand"
+tmux select-pane -t 5
+
+tmux -2 attach-session -t "$session"

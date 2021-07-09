@@ -1,0 +1,22 @@
+<header class="container-lg clearfix">
+  <div class="col-12 float-left">
+    <nav class="UnderlineNav">
+      <div class="UnderlineNav-body">
+        <a href="{{ "/" | prepend: site.baseurl }}" role="tab" title="Tetris"
+           class="UnderlineNav-item {% if page.about == 'home' %}selected{% endif %}">Tetris</a>
+        <a href="{{ "/design" | prepend: site.baseurl }}" role="tab" title="Design"
+           class="UnderlineNav-item {% if page.about == 'design' %}selected{% endif %}">Design</a>
+        <a href="{{ "/implementation" | prepend: site.baseurl }}" role="tab" title="Implementation"
+           class="UnderlineNav-item {% if page.about == 'implementation' %}selected{% endif %}">Implementation</a>
+        <a href="{{ "/results" | prepend: site.baseurl }}" role="tab" title="Results"
+           class="UnderlineNav-item {% if page.about == 'results' %}selected{% endif %}">Results</a>
+        <a href="{{ "/conclusion" | prepend: site.baseurl }}" role="tab" title="Conclusion"
+           class="UnderlineNav-item {% if page.about == 'conclusion' %}selected{% endif %}">Conclusion</a>
+        <a href="{{ "/team" | prepend: site.baseurl }}" role="tab" title="Team"
+           class="UnderlineNav-item {% if page.about == 'team' %}selected{% endif %}">Team</a>
+        <a href="{{ "/materials" | prepend: site.baseurl }}" role="tab" title="Materials"
+           class="UnderlineNav-item {% if page.about == 'materials' %}selected{% endif %}">Materials</a>
+      </div>
+    </nav>
+  </div>
+</header>

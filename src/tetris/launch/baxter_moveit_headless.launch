@@ -1,0 +1,11 @@
+<launch>
+  <rosparam command="load" file="$(find tetris)/conf/joint_limits.yaml" />
+  <node name="joint_trajectory_action_server" pkg="baxter_interface"
+        type="joint_trajectory_action_server.py" output="log" />
+  <include file="$(find baxter_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true" />
+  </include>
+  <include file="$(find baxter_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true" />
+  </include>
+</launch>

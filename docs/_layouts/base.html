@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:;">
+    -->
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/10.10.2/build.css">
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <style type="text/css">
+      /* .UnderlineNav { overflow: auto; } */
+      img { width: 100%; }
+      iframe { width: 100%; }
+      .video-wrapper { position: relative; width: 100%; height: 0; padding-bottom: 51%; }
+      .video-wrapper iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; }
+    </style>
+  </head>
+  {% include header.html %}
+  <main class="container-lg f4">
+    <div class="gutter-lg-spacious">
+      {{ content }}
+    </div>
+  </main>
+  {% include footer.html %}
+</html>

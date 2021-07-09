@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rosservice call /cameras/reset
+rosservice call /cameras/open '{name: "left_hand_camera", settings: {width: 1280, height: 800}}'
+rosservice call /cameras/open '{name: "right_hand_camera", settings: {width: 1280, height: 800}}'
